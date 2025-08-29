@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
 const balls = [
@@ -150,7 +150,7 @@ function InteractiveBall({ ball, mouseX, mouseY, isAttracting }: BallProps) {
       x.set(0);
       y.set(0);
     }
-  }, [mouseX, mouseY, ballPos, x, y]);
+  }, [mouseX, mouseY, ballPos, x, y, isAttracting]);
 
   return (
     <motion.div

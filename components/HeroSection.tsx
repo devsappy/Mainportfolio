@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import InteractiveBalls from './InteractiveBalls';
 
@@ -9,7 +8,6 @@ export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
   const [mounted, setMounted] = useState(false);
@@ -81,7 +79,7 @@ export default function HeroSection() {
           className="text-5xl md:text-7xl font-bold mb-6 text-center"
         >
           <div className="block">
-            <div className="text-5xl md:text-7xl font-bold text-blue-100">Hi, I'm Saptarshi</div>
+            <div className="text-5xl md:text-7xl font-bold text-blue-100">Hi, I&apos;m Saptarshi</div>
             <div className="relative w-full h-20 overflow-hidden flex justify-center">
               {mounted && words.map((word, index) => (
                 <motion.span
