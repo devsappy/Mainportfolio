@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { useCursor } from '@/contexts/CursorContext';
 
 export default function CustomCursor() {
   const [isPointer, setIsPointer] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const { cursorImage, cursorText } = useCursor();
   
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -16,8 +19,8 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
+      cursorX.set(e.clientX - 10);
+      cursorY.set(e.clientY - 10);
     };
 
     const handleMouseEnter = () => setIsHidden(false);
@@ -50,12 +53,47 @@ export default function CustomCursor() {
 
   return (
     <>
+      {/* Image preview when hovering over project cards */}
+      <AnimatePresence>
+        {cursorImage && (
+          <motion.div
+            className="fixed pointer-events-none z-[10000]"
+            style={{
+              x: cursorXSpring,
+              y: cursorYSpring,
+              translateX: '-50%',
+              translateY: '-120%',
+            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="relative w-32 h-32 rounded-lg overflow-hidden shadow-2xl border-2 border-cyan-400/50">
+              <Image
+                src={cursorImage}
+                alt="Preview"
+                fill
+                className="object-cover"
+                sizes="128px"
+              />
+              {cursorText && (
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
+                  <p className="text-white text-xs font-semibold text-center">{cursorText}</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Main cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-5 h-5 pointer-events-none z-[9999] mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
+          opacity: cursorImage ? 0 : 1,
         }}
       >
         <motion.div
@@ -70,10 +108,11 @@ export default function CustomCursor() {
 
       {/* Cursor ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-5 h-5 pointer-events-none z-[9998]"
         style={{
           x: cursorX,
           y: cursorY,
+          opacity: cursorImage ? 0 : 1,
         }}
       >
         <motion.div

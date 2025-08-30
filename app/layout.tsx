@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Particles from "@/components/Particles";
 import ClientOnly from "@/components/ClientOnly";
 import CustomCursor from "@/components/CustomCursor";
+import { CursorProvider } from "@/contexts/CursorContext";
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
@@ -37,14 +38,16 @@ export default function RootLayout({
         <link href="https://fonts.cdnfonts.com/css/bastliga-one" rel="stylesheet" />
       </head>
       <body className={`${spaceGrotesk.variable} ${ubuntu.variable} font-space-grotesk cursor-none`} suppressHydrationWarning>
-        <ClientOnly>
-          <CustomCursor />
-          <Particles />
-        </ClientOnly>
-        <Navbar />
-        <main className="relative z-10">
-          {children}
-        </main>
+        <CursorProvider>
+          <ClientOnly>
+            <CustomCursor />
+            <Particles />
+          </ClientOnly>
+          <Navbar />
+          <main className="relative z-10">
+            {children}
+          </main>
+        </CursorProvider>
       </body>
     </html>
   );
