@@ -28,10 +28,16 @@ export default function ProjectCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const { setCursorImage, setCursorText } = useCursor();
 
-  const handleMouseEnter = () => {
-    if (image) {
+  const handleCardMouseMove = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const isButton = target.tagName === 'A' || target.closest('a');
+    
+    if (image && !isButton) {
       setCursorImage(image);
       setCursorText(title);
+    } else {
+      setCursorImage(null);
+      setCursorText(null);
     }
   };
 
@@ -48,7 +54,7 @@ export default function ProjectCard({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
       className="relative bg-dark-card border border-primary/20 rounded-lg overflow-hidden group cursor-pointer hover:-translate-y-2 transition-transform duration-300 ease-out flex flex-col h-full"
-      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleCardMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       {/* Top gradient bar */}

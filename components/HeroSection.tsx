@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import InteractiveBalls from './InteractiveBalls';
 
 export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -57,8 +56,6 @@ export default function HeroSection() {
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-secondary to-dark" />
 
-      {/* Interactive gradient balls */}
-      <InteractiveBalls />
 
       {/* Subtle floating orbs (kept for additional depth) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -81,14 +78,14 @@ export default function HeroSection() {
           <div className="block">
             <div className="text-5xl md:text-7xl font-bold text-blue-100">Hi, I&apos;m Saptarshi</div>
             <div className="relative w-full h-20 overflow-hidden flex justify-center">
-              {mounted && words.map((word, index) => (
+              {words.map((word, index) => (
                 <motion.span
                   key={word}
                   style={{ color: '#00ffff' }}
                   className="absolute whitespace-nowrap text-5xl md:text-7xl font-bold"
                   initial={{ y: 80 }}
                   animate={{
-                    y: index === currentWordIndex ? 0 : index < currentWordIndex ? -80 : 80
+                    y: mounted ? (index === currentWordIndex ? 0 : index < currentWordIndex ? -80 : 80) : 80
                   }}
                   transition={{
                     duration: 0.6,

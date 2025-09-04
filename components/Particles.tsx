@@ -40,6 +40,7 @@ export default function Particles() {
       ref={containerRef}
       className="fixed inset-0 pointer-events-none overflow-hidden z-0"
       style={{ animation: 'float 15s infinite' }}
+      suppressHydrationWarning
     />
   );
 }

@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <button 
             onClick={() => handleNavClick('#home')}
-            className="text-2xl font-bastliga text-primary cursor-pointer"
+            className="text-2xl font-bold text-primary cursor-pointer"
           >
             Sappy
           </button>
