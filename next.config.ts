@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  // Force rebuild on Vercel
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
