@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const Lanyard = dynamic(() => import('./Lanyard'), { ssr: false });
 
 export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -52,10 +55,10 @@ export default function HeroSection() {
   }, [direction, words.length]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-secondary to-dark" />
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
 
+      {/* Lanyard 3D Effect - positioned on the left */}
+      <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
 
       {/* Subtle floating orbs (kept for additional depth) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -76,7 +79,7 @@ export default function HeroSection() {
           className="text-5xl md:text-7xl font-bold mb-6 text-center"
         >
           <div className="block">
-            <div className="text-5xl md:text-7xl font-bold text-blue-100">Hi, I&apos;m Saptarshi</div>
+            <div className="text-5xl md:text-7xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">Hi, I&apos;m Saptarshi</div>
             <div className="relative w-full h-20 overflow-hidden flex justify-center">
               {words.map((word, index) => (
                 <motion.span
@@ -104,7 +107,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="text-xl md:text-2xl text-blue-400 mb-8 uppercase tracking-wider"
+          className="text-xl md:text-2xl text-white/90 mb-8 uppercase tracking-wider drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
         >
           <span className="text-primary">{'< '}</span>
           Frontend Developer | UI/UX Enthusiast | React Specialist
@@ -141,7 +144,7 @@ export default function HeroSection() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <div className="flex flex-col items-center">
-          <span className="text-blue-400 text-sm uppercase tracking-wider mb-2">Scroll</span>
+          <span className="text-white/80 text-sm uppercase tracking-wider mb-2">Scroll</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}

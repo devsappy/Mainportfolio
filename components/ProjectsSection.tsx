@@ -1,56 +1,46 @@
 'use client';
 
-import ProjectCard from '@/components/ProjectCard';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const InfiniteMenu = dynamic(() => import('./InfiniteMenu'), { ssr: false });
 
 const projects = [
   {
     title: 'ThirtySix Studio Clone',
-    description: 'Pixel-perfect recreation of the award-winning ThirtySix Studio website with smooth animations, interactive elements, and modern design principles.',
-    technologies: ['React', 'GSAP', 'Tailwind CSS', 'Framer Motion'],
-    liveLink: 'https://thirty-six-studio-clone-topaz.vercel.app/',
-    githubLink: '#',
+    description: 'Pixel-perfect recreation of the award-winning ThirtySix Studio website with smooth animations.',
     image: '/img 1.png',
+    link: 'https://thirty-six-studio-clone-topaz.vercel.app/',
   },
   {
     title: 'GTA 6 Landing Page',
-    description: 'Immersive landing page for GTA 6 featuring cinematic scroll animations, parallax effects, and seamless integration of GSAP with Locomotive Scroll.',
-    technologies: ['React', 'GSAP', 'Locomotive Scroll', 'Three.js'],
-    liveLink: 'https://gta-vi-blue.vercel.app/',
-    githubLink: 'https://github.com/devsappy/GTA-VI',
+    description: 'Immersive landing page for GTA 6 featuring cinematic scroll animations and parallax effects.',
     image: '/img 2.png',
+    link: 'https://gta-vi-blue.vercel.app/',
   },
   {
     title: 'Portfolio Website v1',
-    description: 'Creative developer portfolio showcasing projects with 3D animations, dynamic interactions, and glassmorphism design elements.',
-    technologies: ['HTML5', 'CSS3', 'GSAP', 'Tailwind CSS', 'JavaScript'],
-    liveLink: 'https://devsappy.github.io/sappy.dev/',
-    githubLink: 'https://github.com/devsappy/sappy.dev',
+    description: 'Creative developer portfolio showcasing projects with 3D animations and glassmorphism.',
     image: '/img 3.png',
+    link: 'https://devsappy.github.io/sappy.dev/',
   },
   {
     title: 'Portfolio Website v2',
-    description: 'Modern minimalist portfolio featuring smooth page transitions, interactive cursor effects, and animated gradient backgrounds.',
-    technologies: ['HTML5', 'CSS3', 'GSAP', 'Tailwind CSS', 'JavaScript'],
-    liveLink: 'https://devsappy.github.io/portfolio2/',
-    githubLink: 'https://github.com/devsappy/portfolio2',
+    description: 'Modern minimalist portfolio with smooth page transitions and interactive cursor effects.',
     image: '/img 4.png',
+    link: 'https://devsappy.github.io/portfolio2/',
   },
   {
     title: 'Miranda Website Clone',
-    description: 'Sophisticated recreation of Miranda design agency website featuring elegant animations, smooth transitions, and premium visual aesthetics.',
-    technologies: ['React', 'GSAP', 'CSS3', 'JavaScript'],
-    liveLink: 'https://miranda-sand.vercel.app/',
-    githubLink: 'https://github.com/devsappy/MIRANDA',
+    description: 'Sophisticated recreation of Miranda design agency website with elegant animations.',
     image: '/img 5.png',
+    link: 'https://miranda-sand.vercel.app/',
   },
   {
     title: 'Chatbot UI',
-    description: 'Intelligent conversational AI interface with real-time messaging, natural language processing, and seamless user interaction design.',
-    technologies: ['React', 'TypeScript', 'OpenAI API', 'Tailwind CSS'],
-    liveLink: 'https://devsappy.github.io/SyntaxLoopers_Diversion/',
-    githubLink: 'https://github.com/devsappy/SyntaxLoopers_Diversion',
+    description: 'Intelligent conversational AI interface with real-time messaging and seamless UX.',
     image: '/img 6.png',
+    link: 'https://devsappy.github.io/SyntaxLoopers_Diversion/',
   },
 ];
 
@@ -74,27 +64,27 @@ export default function ProjectsSection() {
         >
           <span className="text-primary">{'//'}</span> Projects
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-center text-blue-400 text-lg mb-16 max-w-2xl mx-auto"
+          className="text-center text-blue-400 text-lg mb-8 max-w-2xl mx-auto"
         >
-          A collection of my recent work showcasing modern web development 
+          Drag to explore my recent work showcasing modern web development
           techniques and creative solutions
         </motion.p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              {...project}
-              index={index}
-            />
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          style={{ height: '600px', position: 'relative' }}
+        >
+          <InfiniteMenu items={projects} />
+        </motion.div>
       </div>
     </section>
   );

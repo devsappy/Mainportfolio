@@ -21,12 +21,6 @@ export default function AboutSection() {
       className="min-h-screen relative overflow-hidden"
       style={{ opacity, scale }}
     >
-      {/* Background effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-dark via-dark-secondary to-dark -z-10" />
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/6 w-72 h-72 bg-primary/4 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-1/4 right-1/6 w-64 h-64 bg-secondary/3 rounded-full blur-3xl animate-float-reverse" />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.h1
@@ -34,7 +28,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-6xl font-bold text-center mb-16"
+          className="text-5xl md:text-6xl font-bold text-center mb-16 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
         >
           <span className="text-primary">{'//'}</span> About Me
         </motion.h1>
@@ -45,24 +39,24 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6 text-blue-400"
+            className="space-y-6 text-white/90"
           >
             <p className="text-lg leading-relaxed">
-              I&apos;m a passionate frontend developer specializing in creating stunning, 
-              interactive user interfaces that blend aesthetics with functionality. 
+              I&apos;m a passionate frontend developer specializing in creating stunning,
+              interactive user interfaces that blend aesthetics with functionality.
               I transform designs into pixel-perfect, performant web experiences.
             </p>
-            
+
             <p className="text-lg leading-relaxed">
-              My expertise lies in modern JavaScript frameworks like React, Vue, and Next.js, 
-              combined with a deep understanding of CSS animations, responsive design, 
-              and web performance optimization. I believe great UX comes from attention 
+              My expertise lies in modern JavaScript frameworks like React, Vue, and Next.js,
+              combined with a deep understanding of CSS animations, responsive design,
+              and web performance optimization. I believe great UX comes from attention
               to detail and understanding user behavior.
             </p>
-            
+
             <p className="text-lg leading-relaxed">
-              When I&apos;m not crafting interfaces, you&apos;ll find me experimenting with WebGL, 
-              exploring new CSS features, contributing to design systems, or diving into 
+              When I&apos;m not crafting interfaces, you&apos;ll find me experimenting with WebGL,
+              exploring new CSS features, contributing to design systems, or diving into
               the latest frontend frameworks and tools.
             </p>
 

@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  // Configure webpack for better hot reload
+  // Configure webpack for better hot reload and GLB files
   webpack: (config, { dev, isServer }) => {
     if (dev && !isServer) {
       // Ensure hot reload works properly
@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
         ignored: /node_modules/,
       };
     }
+
+    // Add GLB file support
+    config.module.rules.push({
+      test: /\.(glb|gltf)$/,
+      type: 'asset/resource',
+    });
+
     return config;
   },
   // Experimental features for better DX

@@ -15,20 +15,13 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Check if this is the first visit
     const hasVisited = sessionStorage.getItem('hasVisited');
-    
+
     if (hasVisited) {
       // If already visited in this session, don't show loading
       setIsPageLoading(false);
     } else {
-      // First visit - show loading screen
+      // First visit - mark as visited, loading will be controlled by CountUp onEnd
       sessionStorage.setItem('hasVisited', 'true');
-      
-      // Minimum loading time for better UX
-      const timer = setTimeout(() => {
-        setIsPageLoading(false);
-      }, 3000);
-
-      return () => clearTimeout(timer);
     }
   }, []);
 

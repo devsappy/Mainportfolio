@@ -64,13 +64,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="min-h-screen relative">
-      {/* Background effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-dark via-dark-secondary to-dark -z-10" />
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 right-1/6 w-56 h-56 bg-accent/3 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-1/4 left-1/6 w-64 h-64 bg-primary/4 rounded-full blur-3xl animate-float-reverse" />
-      </div>
+    <section id="contact" className="min-h-screen relative bg-transparent">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <motion.h1
@@ -78,7 +72,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-5xl md:text-6xl font-bold text-center mb-8"
+          className="text-5xl md:text-6xl font-bold text-center mb-8 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
         >
           <span className="text-primary">{'//'}</span> Get In Touch
         </motion.h1>
@@ -88,7 +82,7 @@ export default function ContactSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-center text-blue-400 text-lg mb-16 max-w-2xl mx-auto"
+          className="text-center text-white/80 text-lg mb-16 max-w-2xl mx-auto"
         >
           Let&apos;s collaborate and bring your ideas to life. I&apos;m always excited to work on new projects and challenges.
         </motion.p>
@@ -105,7 +99,7 @@ export default function ContactSection() {
             <h3 className="text-2xl font-bold text-primary mb-6">Send Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-blue-400 text-sm font-medium mb-2">
+                <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">
                   Name
                 </label>
                 <input
@@ -121,7 +115,7 @@ export default function ContactSection() {
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-blue-400 text-sm font-medium mb-2">
+                <label htmlFor="email" className="block text-white/90 text-sm font-medium mb-2">
                   Email
                 </label>
                 <input
@@ -137,7 +131,7 @@ export default function ContactSection() {
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-blue-400 text-sm font-medium mb-2">
+                <label htmlFor="message" className="block text-white/90 text-sm font-medium mb-2">
                   Message
                 </label>
                 <textarea
@@ -199,15 +193,15 @@ export default function ContactSection() {
               <div className="space-y-4">
                 <div>
                   <h4 className="text-white font-semibold mb-2">Location</h4>
-                  <p className="text-blue-400">Available Worldwide (Remote)</p>
+                  <p className="text-white/80">Available Worldwide (Remote)</p>
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-2">Response Time</h4>
-                  <p className="text-blue-400">Usually within 24 hours</p>
+                  <p className="text-white/80">Usually within 24 hours</p>
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-2">Availability</h4>
-                  <p className="text-blue-400">Open for freelance projects</p>
+                  <p className="text-white/80">Open for freelance projects</p>
                 </div>
               </div>
             </div>
@@ -228,7 +222,7 @@ export default function ContactSection() {
                     <span className="text-2xl group-hover:scale-110 transition-transform">
                       {link.icon}
                     </span>
-                    <span className="text-blue-400 group-hover:text-accent transition-colors">
+                    <span className="text-white/90 group-hover:text-accent transition-colors">
                       {link.name}
                     </span>
                   </motion.a>
@@ -246,8 +240,8 @@ export default function ContactSection() {
           transition={{ delay: 0.6 }}
           className="mt-20 pt-8 border-t border-primary/20 text-center"
         >
-          <p className="text-blue-400">
-            © 2024 Sappy. Built with Next.js, Tailwind CSS, and lots of ☕
+          <p className="text-white/70">
+            © 2024 Sappy. Built with Next.js, Tailwind CSS, and lots of coffee
           </p>
         </motion.div>
       </div>
