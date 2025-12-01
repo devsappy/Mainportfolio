@@ -3,8 +3,19 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-const InfiniteMenu = dynamic(() => import('@/components/InfiniteMenu'), { ssr: false });
-const Silk = dynamic(() => import('@/components/Silk'), { ssr: false });
+const InfiniteMenu = dynamic(() => import('@/components/InfiniteMenu'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+    </div>
+  )
+});
+
+const Silk = dynamic(() => import('@/components/Silk'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-[#0a0a1a]" />
+});
 
 const menuItems = [
   {

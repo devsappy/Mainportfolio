@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
-const Lanyard = dynamic(() => import('./Lanyard'), { ssr: false });
+const Lanyard = dynamic(() => import('./Lanyard'), {
+  ssr: false,
+  loading: () => null
+});
 
 export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
