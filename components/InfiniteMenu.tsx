@@ -343,7 +343,11 @@ function resizeCanvasToDisplaySize(canvas: HTMLCanvasElement) {
 function makeBuffer(gl: WebGL2RenderingContext, sizeOrData: ArrayBufferView | number, usage: number) {
   const buf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, sizeOrData, usage);
+  if (typeof sizeOrData === 'number') {
+    gl.bufferData(gl.ARRAY_BUFFER, sizeOrData, usage);
+  } else {
+    gl.bufferData(gl.ARRAY_BUFFER, sizeOrData, usage);
+  }
   gl.bindBuffer(gl.ARRAY_BUFFER, null);
   return buf!;
 }
